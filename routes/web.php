@@ -24,6 +24,7 @@ Route::get('/art/{id}', [ArticleController::class,'art']);
 Route::resource('photos', PhotoController::class); 
 Route::resource('photos', PhotoController::class)->only(['index', 'show']); 
 Route::resource('photos', PhotoController::class)->except(['create', 'store', 'update', 'destroy']); 
+Route::get('/greeting', function () { return view('blog.hello', ['name' => 'Fadly']); }); 
 
 
 
@@ -50,7 +51,7 @@ Route::get('/user/{name?}', function ($name='Fadly') {
     return 'Nama saya '.$name;
 });
 
-Route::get('/hello', [WelcomeController::class,'hello']); 
+Route::get('/greeting', [WelcomeController::class, 'greeting']); 
 
 Route::get('/index', [PageController::class,'index']);
 Route::get('/about', [PageController::class,'about']);
